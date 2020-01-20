@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Filmy.User;
 namespace Filmy.Movie
 {
-    public class Film
+    public class Film : IEquatable<Film>
     {
         private List<Oceny> listaOcen;
         private double sredniaOcen;
@@ -28,11 +28,39 @@ namespace Filmy.Movie
         public string Tytul { get => tytul; set => tytul = value; }
         public DateTime Premiera { get => premiera; set => premiera = value; }
         public List<Uzytkownik> OcenionyPrzez { get => ocenionyPrzez; set => ocenionyPrzez = value; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Film);
+        }
+
+        public bool Equals(Film other)
+        {
+            return other != null &&
+                   Tytul == other.Tytul &&
+                   Premiera == other.Premiera;
+        }
+
         public double obliczSrednia()
         {
             double suma=0.0;
             ListaOcen.ForEach(e => suma += (int)e+1);
             return sredniaOcen=(suma/ListaOcen.Count);
+        }
+        //TODO
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        public static bool operator ==(Film left, Film right)
+        {
+            return EqualityComparer<Film>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(Film left, Film right)
+        {
+            return !(left == right);
         }
     }
 

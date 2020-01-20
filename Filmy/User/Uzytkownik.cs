@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Filmy.User
 {
-    public abstract class Uzytkownik
+    public abstract class Uzytkownik : IEquatable<Uzytkownik>
     {
         private string imie;
         private string nazwisko;
@@ -33,6 +34,41 @@ namespace Filmy.User
 
         }
 
-       
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Uzytkownik);
+        }
+
+        public bool Equals(Uzytkownik other)
+        {
+            return other != null &&
+                   UserName == other.UserName &&
+                   Password == other.Password;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+            try
+            { 
+              
+                builder.Append(this.Imie).Append(" ").Append(this.nazwisko).Append("\t" + this.wiek + " lat(a)").Append(" " + UserName).AppendLine(" " + password);
+            }
+            catch(Exception e)
+            {
+                throw (e);
+            }
+            return builder.ToString();
+        }
+
+        public static bool operator ==(Uzytkownik left, Uzytkownik right)
+        {
+            return EqualityComparer<Uzytkownik>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(Uzytkownik left, Uzytkownik right)
+        {
+            return !(left == right);
+        }
     }
 }

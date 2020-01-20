@@ -20,6 +20,7 @@ namespace Filmy
             user2.OcenFilm(film,3);
             user3.OcenFilm(film, 4);
             Console.WriteLine(film.SredniaOcen);
+            
             Console.ReadKey();
         }
     }
