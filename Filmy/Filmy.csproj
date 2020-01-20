@@ -43,8 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\IncorrectGradeException.cs" />
+    <Compile Include="Exceptions\SecondGradeException.cs" />
+    <Compile Include="Movie\Biblioteka.cs" />
+    <Compile Include="Movie\Oceny.cs" />
+    <Compile Include="Movie\Film.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\Administrator.cs" />
+    <Compile Include="User\BazaUzytkownikow.cs" />
+    <Compile Include="User\NormalnyUzywtkownik.cs" />
+    <Compile Include="User\Uzytkownik.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
