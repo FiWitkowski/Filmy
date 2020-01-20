@@ -31,8 +31,10 @@ namespace Filmy.Movie
         public double obliczSrednia()
         {
             double suma=0.0;
-            ListaOcen.ForEach(e => suma += (int)e);
+            ListaOcen.ForEach(e => suma += (int)e+1);
             return sredniaOcen=(suma/ListaOcen.Count);
         }
     }
+
+   
 }

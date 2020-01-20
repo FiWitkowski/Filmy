@@ -8,7 +8,7 @@ namespace Filmy.User
 {
     public class BazaUzytkownikow
     {
-        private Administrator;
+        //private Administrator;
         private List<Uzytkownik> listaUzytkownikow = new List<Uzytkownik>();
         
     }
