@@ -26,11 +26,6 @@ namespace Filmy.User
         {
             return base.Equals(obj);
         }
-        //moze
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
 
         public override string ToString()
         {
