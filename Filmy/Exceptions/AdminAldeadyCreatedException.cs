@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -8,24 +7,23 @@ using System.Threading.Tasks;
 
 namespace Filmy.Exceptions
 {
-    class IncorrectGradeException : Exception
+    public class AdminAldeadyCreatedException : Exception
     {
-        public IncorrectGradeException():this("Grade not avaiable.")
+        public AdminAldeadyCreatedException() : this("Administrator was already created. You cannot have more than one administrator.")
         {
         }
 
-        public IncorrectGradeException(string message) : base(message)
+        public AdminAldeadyCreatedException(string message) : base(message)
         {
         }
 
-        public IncorrectGradeException(string message, Exception innerException) : base(message, innerException)
+        public AdminAldeadyCreatedException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
-        protected IncorrectGradeException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected AdminAldeadyCreatedException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
-
 
         public override bool Equals(object obj)
         {

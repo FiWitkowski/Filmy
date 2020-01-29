@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Filmy.Movie;
 using Filmy.Exceptions;
 
+
 namespace Filmy.User
 {
     public class NormalnyUzywtkownik : Uzytkownik
@@ -17,6 +18,8 @@ namespace Filmy.User
         public NormalnyUzywtkownik(string imie, string nazwisko, int wiek, string userName, string password) : base(imie, nazwisko, wiek, userName, password)
         {
         }
+        
+        
 
         public override bool Equals(object obj)
         {
@@ -42,19 +45,19 @@ namespace Filmy.User
                 switch (ocena)
                 {
                     case 1:
-                        film.ListaOcen.Add(Oceny.OneStar);
+                        film.ListaOcen.Add(new Ocena(Oceny.OneStar,this));
                         break;
                     case 2:
-                        film.ListaOcen.Add(Oceny.TwoStar);
+                        film.ListaOcen.Add(new Ocena(Oceny.TwoStar, this));
                         break;
                     case 3:
-                        film.ListaOcen.Add(Oceny.ThreeStar);
+                        film.ListaOcen.Add(new Ocena(Oceny.ThreeStar, this));
                         break;
                     case 4:
-                        film.ListaOcen.Add(Oceny.FourStar);
+                        film.ListaOcen.Add(new Ocena(Oceny.FourStar, this));
                         break;
                     case 5:
-                        film.ListaOcen.Add(Oceny.FiveStar);
+                        film.ListaOcen.Add(new Ocena(Oceny.FiveStar, this));
                         break;
                     default:
                         throw (new IncorrectGradeException());

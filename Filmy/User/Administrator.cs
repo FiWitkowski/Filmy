@@ -3,18 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Filmy.Exceptions;
+using Filmy.Systems;
+
 
 namespace Filmy.User
 {
-    public class Administrator : Uzytkownik
+    public sealed class Administrator : Uzytkownik
     {
-        public Administrator(string imie, string username, string password) : base(imie, username, password)
+        
+        //Used for singleton property
+        private static Administrator instance = null;
+        private Administrator(string username, string password):base(username,password) { }
+        private Administrator() : this("admin", "admin") { }
+        public static Administrator Instance
         {
+            get
+            {
+                if(instance == null)
+                {
+                    instance = new Administrator();
+                }
+                return instance;
+            }
         }
 
-        public Administrator(string imie, string nazwisko, int wiek, string userName, string password) : base(imie, nazwisko, wiek, userName, password)
+       
+
+        public static Administrator Create(string username, string password)
         {
+            if(instance == null)
+            {
+                instance = new Administrator(username, password);
+                return instance;
+            }
+            throw (new AdminAldeadyCreatedException());
         }
+
+
+        private List<iSystem<object>> listOfSystems = new List<iSystem<object>>();
+        public List<iSystem<object>> ListOfSystems { get => listOfSystems; set => listOfSystems = value; }
+
 
         public override bool Equals(object obj)
         {
@@ -29,6 +58,11 @@ namespace Filmy.User
         public override string ToString()
         {
             return base.ToString();
+        }
+
+        public bool AddUser(Uzytkownik U)
+        {
+            return true;
         }
     }
 }

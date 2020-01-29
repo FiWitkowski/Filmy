@@ -19,9 +19,9 @@ namespace Filmy.User
         public string Nazwisko { get => nazwisko; set => nazwisko = value; }
         public int Wiek { get => wiek; set => wiek = value; }
         public string UserName { get => userName; set => userName = value; }
-        public string Password { get => password; set => password = value; }
+        protected string Password { private get => password; set => password = value; }
 
-        public Uzytkownik(string imie, string nazwisko, int wiek, string userName, string password)
+        protected Uzytkownik(string imie, string nazwisko, int wiek, string userName, string password)
         {
             Imie = imie;
             Nazwisko = nazwisko;
@@ -29,7 +29,13 @@ namespace Filmy.User
             UserName = userName;
             Password = password;
         }
-        public Uzytkownik(string imie, string username,string password) : this(imie, String.Empty, -1, username, password)
+        protected Uzytkownik(string imie, string username, string password) : this(imie, String.Empty, -1, username, password)
+        { }
+        protected Uzytkownik(string username, string password) : this(string.Empty, username, password)
+        {
+
+        }
+        protected Uzytkownik() : this(String.Empty,"admin","admin")
         {
 
         }

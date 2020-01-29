@@ -43,15 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\AdminAldeadyCreatedException.cs" />
     <Compile Include="Exceptions\IncorrectGradeException.cs" />
     <Compile Include="Exceptions\SecondGradeException.cs" />
-    <Compile Include="Movie\Biblioteka.cs" />
+    <Compile Include="Movie\Ocena.cs" />
+    <Compile Include="Systems\SystemOfSth.cs" />
+    <Compile Include="Systems\iSystem.cs" />
+    <Compile Include="Systems\Biblioteka.cs" />
     <Compile Include="Movie\Oceny.cs" />
     <Compile Include="Movie\Film.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\Administrator.cs" />
-    <Compile Include="User\BazaUzytkownikow.cs" />
+    <Compile Include="Systems\BazaUzytkownikow.cs" />
     <Compile Include="User\NormalnyUzywtkownik.cs" />
     <Compile Include="User\Uzytkownik.cs" />
   </ItemGroup>

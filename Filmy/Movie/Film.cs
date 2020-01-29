@@ -8,7 +8,7 @@ namespace Filmy.Movie
 {
     public class Film : IEquatable<Film>
     {
-        private List<Oceny> listaOcen;
+        private List<Ocena> listaOcen;
         private double sredniaOcen;
         private string tytul;
         private DateTime premiera;
@@ -23,11 +23,12 @@ namespace Filmy.Movie
             ocenionyPrzez = new List<Uzytkownik>();
         }
 
-        public List<Oceny> ListaOcen { get => listaOcen; set => listaOcen = value; }
+    
         public double SredniaOcen { get => sredniaOcen; set => sredniaOcen = value; }
         public string Tytul { get => tytul; set => tytul = value; }
         public DateTime Premiera { get => premiera; set => premiera = value; }
         public List<Uzytkownik> OcenionyPrzez { get => ocenionyPrzez; set => ocenionyPrzez = value; }
+        public List<Ocena> ListaOcen { get => listaOcen; set => listaOcen = value; }
 
         public override bool Equals(object obj)
         {
@@ -44,7 +45,7 @@ namespace Filmy.Movie
         public double obliczSrednia()
         {
             double suma=0.0;
-            ListaOcen.ForEach(e => suma += (int)e+1);
+            ListaOcen.ForEach(e => suma += (int)e.ocena);
             return sredniaOcen=(suma/ListaOcen.Count);
         }
         //TODO
