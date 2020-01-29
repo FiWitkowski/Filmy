@@ -15,6 +15,7 @@ namespace Filmy.GUI
 {
     public partial class MainWindow : Form
     {
+
         Administrator admin = Administrator.Create("admin", "admin");
         BazaUzytkownikow baza = BazaUzytkownikow.Instance;
         Biblioteka bibliotekaFilmow = Biblioteka.Instance;
@@ -23,6 +24,7 @@ namespace Filmy.GUI
         {
             
             InitializeComponent();
+            baza.Deserialize("test.bin");
         }
 
         private void lbZalogujSIe_Click(object sender, EventArgs e)
