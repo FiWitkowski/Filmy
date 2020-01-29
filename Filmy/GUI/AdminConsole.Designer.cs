@@ -235,7 +235,7 @@
             this.tbUsers.Location = new System.Drawing.Point(330, 25);
             this.tbUsers.Multiline = true;
             this.tbUsers.Name = "tbUsers";
-            this.tbUsers.Size = new System.Drawing.Size(100, 244);
+            this.tbUsers.Size = new System.Drawing.Size(223, 244);
             this.tbUsers.TabIndex = 26;
             this.tbUsers.TextChanged += new System.EventHandler(this.tbUsers_TextChanged);
             // 
@@ -252,16 +252,16 @@
             // tbFilmy
             // 
             this.tbFilmy.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.tbFilmy.Location = new System.Drawing.Point(436, 25);
+            this.tbFilmy.Location = new System.Drawing.Point(559, 25);
             this.tbFilmy.Multiline = true;
             this.tbFilmy.Name = "tbFilmy";
-            this.tbFilmy.Size = new System.Drawing.Size(100, 244);
+            this.tbFilmy.Size = new System.Drawing.Size(106, 244);
             this.tbFilmy.TabIndex = 28;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(433, 9);
+            this.label6.Location = new System.Drawing.Point(556, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 29;

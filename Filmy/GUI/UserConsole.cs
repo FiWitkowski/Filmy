@@ -56,6 +56,7 @@ namespace Filmy.GUI
                 lista.Sort();
                 lista.ForEach(f => builder.AppendLine(f.ToString()));
                 tbLista.Text = builder.ToString();
+                biblioteka.Serialize("filmy.bin");
             }
             catch(Exception ex){
                 Form exWindow = new ExceptionWindow(ex.Message);
@@ -74,6 +75,7 @@ namespace Filmy.GUI
                 lista.Sort();
                 lista.ForEach(f => builder.AppendLine(f.ToString()));
                 tbLista.Text = builder.ToString();
+                biblioteka.Serialize("filmy.bin");
             }
             catch(Exception ex)
             {

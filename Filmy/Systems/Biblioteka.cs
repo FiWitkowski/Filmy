@@ -81,10 +81,17 @@ namespace Filmy.Systems
        
         public object Deserialize(string path)
         {
-            using(Stream stream = new FileStream(path, FileMode.Open))
+            try
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                return instance = formatter.Deserialize(stream) as Biblioteka;
+                using (Stream stream = new FileStream(path, FileMode.Open))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    return instance = formatter.Deserialize(stream) as Biblioteka;
+                }
+            }
+            catch
+            {
+                return Biblioteka.Instance;
             }
         }
     }

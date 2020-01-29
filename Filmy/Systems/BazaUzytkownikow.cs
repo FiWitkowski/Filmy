@@ -101,10 +101,18 @@ namespace Filmy.Systems
 
         public object Deserialize(string path)
         {
-            using (Stream stream = new FileStream(path, FileMode.Open))
+            try
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                return instance = formatter.Deserialize(stream) as BazaUzytkownikow;
+                using (Stream stream = new FileStream(path, FileMode.Open))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    return instance = formatter.Deserialize(stream) as BazaUzytkownikow;
+                }
+
+            }
+            catch
+            {
+                return BazaUzytkownikow.Instance;
             }
         }
 

@@ -17,14 +17,16 @@ namespace Filmy.GUI
     {
 
         Administrator admin = Administrator.Create("admin", "admin");
-        BazaUzytkownikow baza = BazaUzytkownikow.Instance;
+        BazaUzytkownikow baza = BazaUzytkownikow.Instance.Deserialize("test.bin") as BazaUzytkownikow;
         Biblioteka bibliotekaFilmow = Biblioteka.Instance;
         Uzytkownik currentUser;
         public MainWindow()
         {
             
             InitializeComponent();
-            baza.Deserialize("test.bin");
+            baza = BazaUzytkownikow.Instance.Deserialize("test.bin") as BazaUzytkownikow;
+            bibliotekaFilmow = Biblioteka.Instance.Deserialize("filmy.bin") as Biblioteka;
+            
         }
 
         private void lbZalogujSIe_Click(object sender, EventArgs e)
@@ -59,6 +61,8 @@ namespace Filmy.GUI
         {
             string username = tbUserName.Text;
             string password = tbPassword.Text;
+            tbPassword.Text = "";
+            tbUserName.Text = "";
             if(admin.UserName==username)
             {
                 currentUser = admin;
@@ -90,8 +94,6 @@ namespace Filmy.GUI
                         Form ex = new ExceptionWindow("Incorrect password");
                         ex.ShowDialog();
                     }
-                    tbPassword.Text = "";
-                    tbUserName.Text = "";
                 }
                 catch(Exception ex)
                 {

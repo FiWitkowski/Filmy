@@ -33,9 +33,9 @@ namespace Filmy.Movie
         public int CompareTo(object obj)
         {
             if (sredniaOcen > ((Film)obj).sredniaOcen)
-                return 1;
-            if (sredniaOcen < ((Film)obj).sredniaOcen)
                 return -1;
+            if (sredniaOcen < ((Film)obj).sredniaOcen)
+                return 1;
             return 0;
         }
 

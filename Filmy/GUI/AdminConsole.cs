@@ -23,7 +23,7 @@ namespace Filmy.GUI
             this.prev = prev;
             InitializeComponent();
             StringBuilder builder = new StringBuilder();
-            bazaUzytkownikow.ListaUzytkownikow.ToList().ForEach(e => builder.AppendLine(e.UserName));
+            bazaUzytkownikow.ListaUzytkownikow.ToList().ForEach(e => builder.AppendLine(e.ToString()));
             tbUsers.Text = builder.ToString();
             StringBuilder builder2 = new StringBuilder();
             List<Film> lista = bibliotekaFilmow.Films.ToList();
@@ -139,8 +139,9 @@ namespace Filmy.GUI
                         bazaUzytkownikow.DodajUzytkownika(new NormalnyUzywtkownik(imie, username, password));
                     }
                     StringBuilder builder = new StringBuilder();
-                    bazaUzytkownikow.ListaUzytkownikow.ToList().ForEach(u=>builder.AppendLine(u.UserName));
+                    bazaUzytkownikow.ListaUzytkownikow.ToList().ForEach(u=>builder.AppendLine(u.ToString()));
                     tbUsers.Text = builder.ToString();
+                    bazaUzytkownikow.Serialize("test.bin");
 
 
 
@@ -168,8 +169,9 @@ namespace Filmy.GUI
                 {
                     bazaUzytkownikow.UsunUzytkownika(username);
                     StringBuilder builder = new StringBuilder();
-                    bazaUzytkownikow.ListaUzytkownikow.ToList().ForEach(u => builder.AppendLine(u.UserName));
+                    bazaUzytkownikow.ListaUzytkownikow.ToList().ForEach(u => builder.AppendLine(u.ToString()));
                     tbUsers.Text = builder.ToString();
+                    bazaUzytkownikow.Serialize("test.bin");
                 }
             }
             catch(Exception ex)
@@ -195,7 +197,7 @@ namespace Filmy.GUI
                     lista.Sort();
                     lista.ForEach(f => builder.AppendLine(f.Tytul));
                     tbFilmy.Text = builder.ToString();
-
+                    bibliotekaFilmow.Serialize("filmy.bin");
                 }
                 else
                 {
@@ -223,6 +225,7 @@ namespace Filmy.GUI
                     lista.Sort();
                     lista.ForEach(f => builder.AppendLine(f.Tytul));
                     tbFilmy.Text = builder.ToString();
+                    bibliotekaFilmow.Serialize("filmy.bin");
                 }
                 else
                 {
