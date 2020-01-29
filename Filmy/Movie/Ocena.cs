@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Filmy.Movie
 {
+    [Serializable]
     public struct Ocena : IComparable, IEquatable<Ocena>
     {
         public Oceny ocena;

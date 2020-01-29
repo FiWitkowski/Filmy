@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Filmy.User
 {
-    public abstract class Uzytkownik : IEquatable<Uzytkownik>
+    [Serializable]
+    public abstract class Uzytkownik : IEquatable<Uzytkownik>, ICloneable
     {
         private string imie;
         private string nazwisko;
@@ -40,6 +41,11 @@ namespace Filmy.User
 
         }
 
+        public bool checkPassword(string password)
+        {
+            return Password == password;
+        }
+
         public override bool Equals(object obj)
         {
             return Equals(obj as Uzytkownik);
@@ -65,6 +71,13 @@ namespace Filmy.User
                 throw (e);
             }
             return builder.ToString();
+        }
+
+        public object Clone()
+        {
+            Uzytkownik u = new NormalnyUzywtkownik(Imie,Nazwisko,Wiek,UserName+"1",Password);
+            return u;
+
         }
 
         public static bool operator ==(Uzytkownik left, Uzytkownik right)

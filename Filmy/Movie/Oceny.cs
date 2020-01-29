@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Filmy.Movie
 {
+    [Serializable]
     public enum Oceny 
     {
         OneStar,

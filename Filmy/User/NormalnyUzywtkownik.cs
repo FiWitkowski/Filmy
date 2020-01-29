@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Filmy.Movie;
 using Filmy.Exceptions;
-
+using Filmy.Systems;
 
 namespace Filmy.User
 {
+    [Serializable]
     public class NormalnyUzywtkownik : Uzytkownik
     {
         public NormalnyUzywtkownik(string imie, string username, string password) : base(imie, username, password)
@@ -35,35 +36,52 @@ namespace Filmy.User
         {
             return base.ToString();
         }
-        public void OcenFilm(Film film, int ocena)
+
+        public void UsunOcene(Film film)
         {
             try
             {
-                //A moze lepiej zeby zamienic ocene?
-                if (film.OcenionyPrzez.Contains(this))
-                    throw (new SecondGradeException());
+                film.ListaOcen.Remove(film.ListaOcen.First(e => e.uzytkownik.Equals(this)));
+                film.obliczSrednia();
+            }
+            catch(ArgumentNullException e)
+            {
+                
+            }
+            catch(Exception e)
+            {
+                
+            }           
+        }
+        public void OcenFilm(string tytul, int ocena)
+        {
+            try
+            {
+                Film film = Biblioteka.Instance.Films.First(f => f.Tytul == tytul);
+                UsunOcene(film);
+                    
                 switch (ocena)
                 {
                     case 1:
-                        film.ListaOcen.Add(new Ocena(Oceny.OneStar,this));
+                        film.ListaOcen.AddLast(new Ocena(Oceny.OneStar, this)); 
                         break;
                     case 2:
-                        film.ListaOcen.Add(new Ocena(Oceny.TwoStar, this));
+                        film.ListaOcen.AddLast(new Ocena(Oceny.TwoStar, this));
                         break;
                     case 3:
-                        film.ListaOcen.Add(new Ocena(Oceny.ThreeStar, this));
+                        film.ListaOcen.AddLast(new Ocena(Oceny.ThreeStar, this));
                         break;
                     case 4:
-                        film.ListaOcen.Add(new Ocena(Oceny.FourStar, this));
+                        film.ListaOcen.AddLast(new Ocena(Oceny.FourStar, this));
                         break;
                     case 5:
-                        film.ListaOcen.Add(new Ocena(Oceny.FiveStar, this));
+                        film.ListaOcen.AddLast(new Ocena(Oceny.FiveStar, this));
                         break;
                     default:
                         throw (new IncorrectGradeException());
                 }
                 film.obliczSrednia();
-                film.OcenionyPrzez.Add(this);
+               
             }
             catch(Exception e)
             {

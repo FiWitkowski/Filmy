@@ -7,11 +7,16 @@ using Filmy.User;
 
 namespace Filmy.Systems
 {
+
     public interface iSystem<T>
     {
         
         void DodajElement(T u);
-        void UsunElement(T u); 
+        bool UsunElement(T u);
+
+        void Serialize(string path);
+        object Deserialize(string path);
+
 
     }
 }

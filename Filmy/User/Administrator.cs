@@ -9,6 +9,7 @@ using Filmy.Systems;
 
 namespace Filmy.User
 {
+    [Serializable]
     public sealed class Administrator : Uzytkownik
     {
         
@@ -20,31 +21,18 @@ namespace Filmy.User
         {
             get
             {
-                if(instance == null)
-                {
-                    instance = new Administrator();
-                }
                 return instance;
             }
         }
-
-       
-
         public static Administrator Create(string username, string password)
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = new Administrator(username, password);
                 return instance;
             }
             throw (new AdminAldeadyCreatedException());
         }
-
-
-        private List<iSystem<object>> listOfSystems = new List<iSystem<object>>();
-        public List<iSystem<object>> ListOfSystems { get => listOfSystems; set => listOfSystems = value; }
-
-
         public override bool Equals(object obj)
         {
             return base.Equals(obj);
@@ -60,9 +48,6 @@ namespace Filmy.User
             return base.ToString();
         }
 
-        public bool AddUser(Uzytkownik U)
-        {
-            return true;
-        }
+
     }
 }
